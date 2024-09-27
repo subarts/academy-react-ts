@@ -1,6 +1,6 @@
 import React from "react"
 
-type props = {
+type Props = {
   name: string
   email: string
   getEmail: (e: string) => void
@@ -8,7 +8,7 @@ type props = {
   writeNewUser: () => void
 }
 
-const User: React.FC<props> = ({
+const User: React.FC<Props> = ({
   writeNewUser,
   getName,
   getEmail,
@@ -23,7 +23,7 @@ const User: React.FC<props> = ({
         className="name"
         value={name}
         placeholder="name"
-        onChange={(e) => {
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           getName(e.target.value)
         }}
       />
@@ -32,7 +32,9 @@ const User: React.FC<props> = ({
         className="email"
         value={email}
         placeholder="email"
-        onChange={(e) => getEmail(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+          getEmail(e.target.value)
+        }
       />
       <button onClick={writeNewUser}>Добавить</button>
     </div>

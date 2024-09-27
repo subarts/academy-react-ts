@@ -11,7 +11,6 @@ const UserManagement = () => {
   }
 
   const [users, setUsers] = useState<User[]>([])
-
   const [name, setName] = useState<string>("")
   const [email, setEmail] = useState<string>("")
 
@@ -39,9 +38,15 @@ const UserManagement = () => {
     clearInputs()
   }
   /* правка юзера */
-  function editUser(e: React.SyntheticEvent): void {
-    const target = e.target as HTMLInputElement
-    const id: number = +target.parentNode.firstChild.textContent
+  function editUser(
+    e: React.MouseEvent<Element, MouseEvent> & { target: HTMLButtonElement }
+  ): void {
+    clearInputs()
+    const target = e.target?.parentNode?.firstChild?.textContent
+    let id: number = 0
+    if (typeof target === "string") {
+      id = +target
+    }
     clearInputs()
     setUsers(
       users.map((el) => {
@@ -55,9 +60,15 @@ const UserManagement = () => {
   }
 
   /* удаление юзера */
-  function deleteUser(e: React.SyntheticEvent): void {
-    const target = e.target as HTMLInputElement
-    const deleteId: number = +target.parentNode.firstChild.textContent
+  function deleteUser(
+    e: React.MouseEvent<Element, MouseEvent> & { target: HTMLButtonElement }
+  ): void {
+    const target = e.target?.parentNode?.firstChild?.textContent
+    let deleteId: number = 0
+    if (typeof target === "string") {
+      deleteId = +target
+    }
+
     setUsers(users.filter((el) => el.id !== deleteId))
   }
   const usersProps = { users, editUser, deleteUser }

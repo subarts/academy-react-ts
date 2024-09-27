@@ -4,21 +4,24 @@ interface User {
   email: string
 }
 
-type props = {
+type Props = {
   users: User[]
-  editUser: (e: React.SyntheticEvent) => void
-
-  deleteUser: (e: React.SyntheticEvent) => void
+  editUser: (
+    e: React.MouseEvent<Element, MouseEvent> & { target: HTMLButtonElement }
+  ) => void
+  deleteUser: (
+    e: React.MouseEvent<Element, MouseEvent> & { target: HTMLButtonElement }
+  ) => void
 }
 
-const Users: React.FC<props> = ({ users, editUser, deleteUser }) => {
-  const usersList = users.map((el: User) => {
+const Users: React.FC<Props> = ({ users, editUser, deleteUser }) => {
+  const usersList = users.map((user: User) => {
     return (
-      <div key={el.id} className="user">
+      <div key={user.id} className="user">
         <ul>
-          <li className="user__id">{el.id}</li>
-          <li className="user__name">name:{el.name}</li>
-          <li className="user__email">email:{el.email}</li>
+          <li className="user__id">{user.id}</li>
+          <li className="user__name">name:{user.name}</li>
+          <li className="user__email">email:{user.email}</li>
         </ul>
         <div className="user__buttons">
           <button onClick={deleteUser}>удалить</button>
