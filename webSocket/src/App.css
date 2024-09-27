@@ -1,0 +1,35 @@
+body{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#root{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.regCon{
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+ul{
+  padding: 0;
+}
+li{
+list-style-type: none;
+}
+.receipt{
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  height: 300px;
+  max-width: 400px;  
+
+  overflow: scroll;
+  scrollbar-width: none;
+  padding: 20px;
+  word-break: break-all;
+}
+button{
+width: fit-content;
+}
